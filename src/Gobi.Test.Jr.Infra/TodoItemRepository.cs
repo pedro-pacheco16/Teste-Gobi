@@ -53,7 +53,27 @@ namespace Gobi.Test.Jr.Infra
 	
 		public IEnumerable<TodoItem> GetAll()
 		{
-			return new List<TodoItem>();
+			var items =  new List<TodoItem>();
+
+			using (var command =  CreateCommand())
+			{
+				command.CommandText = "SELECT Id, Description, Completed FROM TodoItem";
+				command.Connection.Open( );
+				using (var reader = command.ExecuteReader())
+				{
+					while( reader.Read() )
+					{
+						items.Add(new TodoItem()
+						{
+							Id = reader.GetInt32(0), 
+							Description = reader.GetString(1), 
+							Completed = reader.GetInt32(2) == 1
+						});
+					}
+					command.Connection.Close();
+				}
+				return items;
+			}
 		}
 
         public async Task<bool> CreateItem(TodoItemDTO todoItem)
