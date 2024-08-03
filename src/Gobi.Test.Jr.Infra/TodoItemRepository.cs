@@ -1,4 +1,5 @@
 ﻿using Gobi.Test.Jr.Domain;
+using Gobi.Test.Jr.Domain.DTO;
 using Gobi.Test.Jr.Domain.Interfaces;
 using System.Data.SQLite;
 
@@ -54,5 +55,35 @@ namespace Gobi.Test.Jr.Infra
 		{
 			return new List<TodoItem>();
 		}
-	}
+
+        public async Task<bool> CreateItem(TodoItemDTO todoItem)
+        {
+			if (todoItem == null)
+			{
+				return false;
+			} 
+            using (var command = CreateCommand())
+            {
+                command.CommandText = "INSERT INTO TodoItem (Description, Completed) VALUES (@description, @completed)";
+                command.Parameters.AddWithValue("@description", todoItem.Description);
+                command.Parameters.AddWithValue("@completed", todoItem.Completed ? 1 : 0);
+
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+            }
+
+			return true;
+        }
+
+        public Task<bool> UpdateItem(TodoItemDTO todoItem, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteItem(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

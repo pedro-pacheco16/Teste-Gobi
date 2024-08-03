@@ -1,4 +1,5 @@
 ﻿using Gobi.Test.Jr.Domain;
+using Gobi.Test.Jr.Domain.DTO;
 using Gobi.Test.Jr.Domain.Interfaces;
 
 namespace Gobi.Test.Jr.Application
@@ -15,6 +16,16 @@ namespace Gobi.Test.Jr.Application
         public IEnumerable<TodoItem> GetAll()
         {
             return _todoItemRepository.GetAll();
+        }
+
+        public async Task<bool> CreateItem (TodoItemDTO item)
+        {
+            if (item.Description == null) 
+            {
+                return false;
+            }
+            bool created = await _todoItemRepository.CreateItem(item);
+            return created;
         }
     }
 }
