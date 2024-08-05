@@ -26,6 +26,29 @@ namespace Gobi.Test.Jr.Application
             }
             bool created = await _todoItemRepository.CreateItem(item);
             return created;
+
+        }
+
+        public async Task<bool> UpdateItem (TodoItemDTO item, int id)
+        {
+
+            if (item == null || item.Description == null)
+            {
+                return false;
+            }
+            bool itemUpdate =  await _todoItemRepository.UpdateItem(item, id);
+            return itemUpdate;
+
+        }
+
+        public async Task<bool> DeleteItem (int id)
+        {
+            if (id <= 0)
+            {
+                return false;
+            }
+            bool DeleteItem = await _todoItemRepository.DeleteItem(id);
+            return DeleteItem;
         }
     }
 }
