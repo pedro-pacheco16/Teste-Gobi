@@ -58,3 +58,15 @@ C:\Users\Philippe\Downloads\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.
 C:\Users\Philippe\Downloads\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\refint\Gobi.Test.Jr.Domain.dll
 C:\Users\Philippe\Downloads\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.pdb
 C:\Users\Philippe\Downloads\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\ref\Gobi.Test.Jr.Domain.dll
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\bin\Debug\net7.0\Gobi.Test.Jr.Domain.deps.json
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\bin\Debug\net7.0\Gobi.Test.Jr.Domain.dll
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\bin\Debug\net7.0\Gobi.Test.Jr.Domain.pdb
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.AssemblyInfo.cs
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.dll
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\refint\Gobi.Test.Jr.Domain.dll
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\Gobi.Test.Jr.Domain.pdb
+C:\Users\LENOVO\Downloads\Gobi.Test.Jr\Gobi.Test.Jr\src\Gobi.Test.Jr.Domain\obj\Debug\net7.0\ref\Gobi.Test.Jr.Domain.dll

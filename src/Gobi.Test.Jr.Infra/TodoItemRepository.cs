@@ -96,9 +96,27 @@ namespace Gobi.Test.Jr.Infra
 			return true;
         }
 
-        public Task<bool> UpdateItem(TodoItemDTO todoItem, int id)
+        public async Task<bool> UpdateItem(TodoItemDTO todoItem, int id)
         {
-            throw new NotImplementedException();
+             if(todoItem == null)
+			 {
+				return false;
+			 }
+
+            using (var command = CreateCommand())
+            {
+                command.CommandText = "UPDATE SET TodoItem Description = @Description, Completed = @Completed WHERE Id = @ (@description, @completed)";
+                command.Parameters.AddWithValue("@description", todoItem.Description);
+                command.Parameters.AddWithValue("@completed", todoItem.Completed ? 1 : 0);
+                command.Parameters.AddWithValue("@id", id);
+
+                command.Connection.Open();
+                int rowsAffected = await command.ExecuteNonQueryAsync();
+                command.Connection.Close();
+
+                return rowsAffected > 0;
+            }
+ 
         }
 
         public Task<bool> DeleteItem(int id)
