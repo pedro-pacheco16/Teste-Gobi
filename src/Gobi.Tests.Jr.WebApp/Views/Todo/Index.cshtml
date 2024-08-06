@@ -28,7 +28,7 @@
                         @(item.Completed ? "Completo" : "Não Completo")
                     </td>
                     <td style="border: 1px solid black;">
-                        <!-- Container para os botões para alinhamento adequado -->
+ 
                         <div style="display: flex; gap: 5px;">
                             <a asp-action="UpdateItem" asp-route-id="@item.Id" class="btn btn-sm btn-primary" style="height: 30px; width: 80px; display: flex; align-items: center; justify-content: center; font-size: 15px;">Editar</a>
                             <form asp-action="Delete" asp-route-id="@item.Id" style="display: inline;">
