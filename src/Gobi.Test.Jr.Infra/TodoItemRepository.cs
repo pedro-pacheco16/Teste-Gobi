@@ -50,14 +50,13 @@ namespace Gobi.Test.Jr.Infra
             command.Connection.Close();
         }
 
-
-        public IEnumerable<TodoItem> GetAll()
+        public async Task <IEnumerable<TodoItem>> GetAll()
         {
             var items = new List<TodoItem>();
 
             using (var command = CreateCommand())
             {
-                command.CommandText = "SELECT Id, Description, Completed FROM TodoItem";
+                command.CommandText = "SELECT Id, Description, Completed FROM TodoItem ORDER BY Completed ASC";
                 command.Connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
@@ -75,6 +74,39 @@ namespace Gobi.Test.Jr.Infra
                 return items;
             }
         }
+
+        public async Task<TodoItem?> GetById(int id)
+        {
+            if (id < 0)
+            {
+				return null;
+			}
+			
+            TodoItem? todoItem = null;
+
+			using (var command = CreateCommand())
+			{
+				command.CommandText = "SELECT Id, Description, Completed FROM TodoItem WHERE Id = @id";
+				command.Parameters.AddWithValue("@id", id);
+
+				command.Connection.Open();
+				using (var reader = command.ExecuteReader())
+				{
+					if (reader.Read())
+					{
+						todoItem = new TodoItem()
+						{
+							Id = reader.GetInt32(0),
+							Description = reader.GetString(1),
+							Completed = reader.GetInt32(2) == 1
+						};
+					}
+					command.Connection.Close();
+				}
+			}
+
+			return todoItem;
+		}
 
         public async Task<bool> CreateItem(TodoItemDTO todoItem)
         {
@@ -104,10 +136,10 @@ namespace Gobi.Test.Jr.Infra
             }
             using (var command = CreateCommand())
             {
-                command.CommandText = "UPDATE SET TodoItem Description = @Description, Completed = @Completed WHERE Id = @Id";
-                command.Parameters.AddWithValue("@description", todoItem.Description);
-                command.Parameters.AddWithValue("@completed", todoItem.Completed ? 1 : 0);
-                command.Parameters.AddWithValue("@id", id);
+                command.CommandText = "UPDATE TodoItem SET Description = @Description, Completed = @Completed WHERE Id = @Id";
+                command.Parameters.AddWithValue("@Description", todoItem.Description);
+                command.Parameters.AddWithValue("@Completed", todoItem.Completed ? 1 : 0);
+                command.Parameters.AddWithValue("@Id", id);
 
                 command.Connection.Open();
                 int rowsAffected = await command.ExecuteNonQueryAsync();

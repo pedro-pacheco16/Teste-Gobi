@@ -1,35 +1,44 @@
 ﻿@model IEnumerable<Gobi.Test.Jr.Domain.TodoItem>
 @{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 
 <div class="container">
 
-	<div class="mt-5 mb-5">
-		<a asp-action="Add" class="btn btn-primary">
-			Add ToDo
-		</a>
-	</div>
+    <div class="mt-5 mb-5">
+        <a asp-action="Create" class="btn btn-primary">
+            Adicionar Itens
+        </a>
+    </div>
 
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Tarefa</th>
-				<th>Opções</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var item in Model)
-			{
-				<tr>
-					<td>@item.Description</td>
-					<td>
-						<a href="#" class="btn btn-sm" title="Editar">Editar</a>
-						<a href="#" class="btn btn-sm" title="Excluir">Excluir</a>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
+    <table style="border: 1px solid black; border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black;">Itens</th>
+                <th style="border: 1px solid black;">Finalizado</th>
+                <th style="border: 1px solid black;">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderBy(x => x.Completed))
+            {
+                <tr>
+                    <td style="border: 1px solid black;">@item.Description</td>
+                    <td style="border: 1px solid black; @(item.Completed ? "background-color: #d4edda; color: #155724;" : "background-color: #f8d7da; color: #721c24;")">
+                        @(item.Completed ? "Completo" : "Não Completo")
+                    </td>
+                    <td style="border: 1px solid black;">
+                        <!-- Container para os botões para alinhamento adequado -->
+                        <div style="display: flex; gap: 5px;">
+                            <a asp-action="UpdateItem" asp-route-id="@item.Id" class="btn btn-sm btn-primary" style="height: 30px; width: 80px; display: flex; align-items: center; justify-content: center; font-size: 15px;">Editar</a>
+                            <form asp-action="Delete" asp-route-id="@item.Id" style="display: inline;">
+                                <button type="submit" class="btn btn-danger" style="height: 30px; width: 80px; display: flex; align-items: center; justify-content: center; font-size: 15px;">Excluir</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 </div>

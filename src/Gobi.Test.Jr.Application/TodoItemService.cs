@@ -13,12 +13,24 @@ namespace Gobi.Test.Jr.Application
             _todoItemRepository = todoItemRepository;
         }
 
-        public IEnumerable<TodoItem> GetAll()
+        public async Task <IEnumerable<TodoItem>> GetAll()
         {
-            return _todoItemRepository.GetAll();
+            return await _todoItemRepository.GetAll();
         }
 
-        public async Task<bool> CreateItem (TodoItemDTO item)
+        public async Task<TodoItem?> GetById(int id)
+        {
+            if (id < 0)
+            {
+                return null;
+            }
+			var Item = await _todoItemRepository.GetById(id);
+
+			return Item;
+
+		}
+
+		public async Task<bool> CreateItem (TodoItemDTO item)
         {
             if (item.Description == null) 
             {
